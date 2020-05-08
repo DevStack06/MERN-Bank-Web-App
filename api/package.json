@@ -1,0 +1,12 @@
+{
+  "name": "api",
+  "version": "0.1.0",
+  "scripts": {
+    "start": "json-server --watch db.json --port 3001"
+  },
+  "author": "Mark Pritchett",
+  "license": "ISC",
+  "devDependencies": {
+    "json-server": "^0.9.4"
+  }
+}

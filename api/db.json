@@ -1,0 +1,69 @@
+{
+  "accounts": [
+    {
+      "id": 1,
+      "name": "Current Account",
+      "balance": 0
+    },
+    {
+      "id": 2,
+      "name": "Savings",
+      "balance": 175
+    },
+    {
+      "name": "Aquib",
+      "balance": 350,
+      "id": 3
+    }
+  ],
+  "transactions": [
+    {
+      "id": 1,
+      "date": "2017-01-30T19:40:00.000Z",
+      "description": "Costa",
+      "debit": 4.59,
+      "credit": null,
+      "accountId": 1
+    },
+    {
+      "id": 2,
+      "date": "2017-01-29T00:00:00.000Z",
+      "description": "Payment Received (Wage)",
+      "debit": null,
+      "credit": 0.01,
+      "accountId": 1
+    },
+    {
+      "date": "2017-02-15T22:22:45.488Z",
+      "description": "Transfer to Savings",
+      "debit": 50,
+      "credit": null,
+      "accountId": 1,
+      "id": 3
+    },
+    {
+      "date": "2017-02-15T22:22:45.500Z",
+      "description": "Transfer from Current Account",
+      "debit": null,
+      "credit": 50,
+      "accountId": 2,
+      "id": 4
+    },
+    {
+      "date": "2020-05-06T09:14:41.976Z",
+      "description": "Transfer to Aquib",
+      "debit": 200,
+      "credit": null,
+      "accountId": 1,
+      "id": 5
+    },
+    {
+      "date": "2020-05-06T09:14:41.981Z",
+      "description": "Transfer from Current Account",
+      "debit": null,
+      "credit": 200,
+      "accountId": 3,
+      "id": 6
+    }
+  ]
+}
