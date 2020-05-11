@@ -44,7 +44,7 @@ class AccountsPage extends Component {
       <div>
         <h2>
           Accounts
-          {showTransferFundsButton && (
+          {/* {showTransferFundsButton && (
             <FlatButton
               label="Transfer funds"
               style={style}
@@ -53,7 +53,7 @@ class AccountsPage extends Component {
               icon={<SwapIcon />}
               onTouchTap={onTransferFundsClick}
             />
-          )}
+          )} */}
         </h2>
         <div>
           {accounts.map((account) => (
