@@ -15,13 +15,13 @@ import * as actionTypes from "./constants";
 import formatMoney from "../formatMoney";
 import { CALL_API } from "../middleware/api";
 
-const validateLoginRequest = (credentials) => {
+const validateLoginRequest = (credentials, existingAccounts) => {
   let result = {
     isValid: true,
     usernameValidationMessage: null,
     passwordValidationMessage: null,
+    id: null,
   };
-
   if (!credentials.username) {
     result.isValid = false;
     result.usernameValidationMessage = "Username is required";
@@ -31,25 +31,42 @@ const validateLoginRequest = (credentials) => {
     result.isValid = false;
     result.passwordValidationMessage = "Password is required";
   }
+  const val = existingAccounts.find(
+    (account) =>
+      account.name === credentials.username &&
+      account.password === credentials.password
+  );
+  if (val) {
+    result.id = val.id;
+  } else {
+    result.isValid = false;
+    result.usernameValidationMessage = "Either Username or password is wrong";
+    result.passwordValidationMessage = "Either Username or password is wrong";
+  }
 
   return result;
 };
 
 export const attemptLogin = (credentials) => {
-  return (dispatch) => {
-    let validationResult = validateLoginRequest(credentials);
+  return (dispatch, getState) => {
+    const { accounts } = getState();
+    let validationResult = validateLoginRequest(
+      credentials,
+      accounts.items || []
+    );
 
     if (!validationResult.isValid) {
       return Promise.resolve(dispatch(loginFailed(validationResult)));
     }
-
+    // fetchAccounts();
+    console.log("id finded here " + validationResult.id);
     dispatch(requestLogin(credentials));
 
     dispatch(loginSuccessful());
     if (credentials.u === 1) {
-      browserHistory.push("/accounts");
+      // browserHistory.push("/accounts");
     } else {
-      browserHistory.push("/user-accounts");
+      // browserHistory.push("/user-accounts");
     }
 
     return Promise.resolve();

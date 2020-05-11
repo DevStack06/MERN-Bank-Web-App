@@ -24,7 +24,7 @@ class AccountsPage extends Component {
     if (!authenticated) {
       browserHistory.push("/");
     }
-    dispatch(fetchAccounts());
+    // dispatch(fetchAccounts());
   }
 
   goToTransactions(id) {

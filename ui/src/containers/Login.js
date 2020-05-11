@@ -4,7 +4,16 @@ import TextField from "material-ui/TextField";
 import RaisedButton from "material-ui/RaisedButton";
 import { attemptLogin } from "../actions";
 // import { browserHistory } from "react-router";
+
+import { fetchAccounts } from "../actions";
+
 class Login extends Component {
+  componentDidMount() {
+    const { dispatch } = this.props;
+
+    dispatch(fetchAccounts());
+  }
+
   onLoginClick() {
     const { dispatch } = this.props;
     let u = 0;
@@ -13,7 +22,7 @@ class Login extends Component {
     if (username === "manager" && password === "12345") {
       u = 1;
     }
-    console.log("jdbbdvb  " + u);
+    // console.log("jdbbdvb  " + u);
     dispatch(
       attemptLogin({
         username,
