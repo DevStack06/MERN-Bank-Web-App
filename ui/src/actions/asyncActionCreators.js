@@ -99,7 +99,7 @@ const validateCreateAccountRequest = (
 
   if (!name) {
     result.isValid = false;
-    result.nameValidationMessage = "Account Name is required";
+    result.nameValidationMessage = "User Name is required";
   }
 
   if (
@@ -108,7 +108,7 @@ const validateCreateAccountRequest = (
     )
   ) {
     result.isValid = false;
-    result.nameValidationMessage = `Account Name ${name} already exists!`;
+    result.nameValidationMessage = `User Name ${name} already exists!`;
   }
 
   if (
@@ -139,7 +139,12 @@ const validateCreateAccountRequest = (
   return result;
 };
 
-const submitCreateAccountRequest = (name, openingBalance) => ({
+const submitCreateAccountRequest = (
+  name,
+  openingBalance,
+  accountType,
+  password
+) => ({
   [CALL_API]: {
     types: [
       actionTypes.CREATE_ACCOUNT_REQUEST,
@@ -148,17 +153,18 @@ const submitCreateAccountRequest = (name, openingBalance) => ({
     ],
     endpoint: "/accounts",
     method: "POST",
-    data: { name, balance: openingBalance },
+    data: { name, balance: openingBalance, accountType, password },
   },
 });
 
-export const createAccount = (name, openingBalance) => {
+export const createAccount = (name, openingBalance, username, password) => {
   return (dispatch, getState) => {
     const { accounts } = getState();
 
     let validationResult = validateCreateAccountRequest(
       name,
       openingBalance,
+
       accounts.items || []
     );
 
@@ -174,7 +180,9 @@ export const createAccount = (name, openingBalance) => {
       openingBalance = parseFloat(openingBalance.trim());
     }
 
-    dispatch(submitCreateAccountRequest(name, openingBalance));
+    dispatch(
+      submitCreateAccountRequest(name, openingBalance, username, password)
+    );
   };
 };
 

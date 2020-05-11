@@ -9,10 +9,12 @@ class NewAccountDialog extends Component {
   submitRequest() {
     const { dispatch } = this.props;
 
-    let accountName = this.refs.accountName.input.value;
+    let accountType = this.refs.accountType.input.value;
     let openingBalance = this.refs.openingBalance.input.value;
+    let userName = this.refs.userName.input.value;
+    let password = this.refs.password.input.value;
 
-    dispatch(createAccount(accountName, openingBalance));
+    dispatch(createAccount(userName, openingBalance, accountType, password));
   }
 
   cancel() {
@@ -54,8 +56,8 @@ class NewAccountDialog extends Component {
             <TextField ref="userName" hintText="User Name" />
           </div>
           <TextField
-            ref="accountName"
-            hintText="Account name"
+            ref="accountType"
+            hintText="Account Type ex-saving,current etc"
             errorText={nameValidationMessage}
           />
         </div>

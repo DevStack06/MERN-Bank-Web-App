@@ -1,19 +1,18 @@
 {
   "accounts": [
     {
-      "id": 1,
-      "name": "Current Account",
-      "balance": 0
+      "name": "balram123",
+      "balance": 599,
+      "accountType": "saving",
+      "password": "1234",
+      "id": 6
     },
     {
-      "id": 2,
-      "name": "Savings",
-      "balance": 175
-    },
-    {
-      "name": "Aquib",
-      "balance": 350,
-      "id": 3
+      "name": "balram1",
+      "balance": 100,
+      "accountType": "saving",
+      "password": "1234",
+      "id": 7
     }
   ],
   "transactions": [
