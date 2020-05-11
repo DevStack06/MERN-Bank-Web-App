@@ -60,13 +60,14 @@ export const attemptLogin = (credentials) => {
     }
     // fetchAccounts();
     console.log("id finded here " + validationResult.id);
+    dispatch(requestAccountById(validationResult.id));
     dispatch(requestLogin(credentials));
 
     dispatch(loginSuccessful());
-    if (credentials.u === 1) {
-      // browserHistory.push("/accounts");
+    if (validationResult.id === -1) {
+      browserHistory.push("/accounts");
     } else {
-      // browserHistory.push("/user-accounts");
+      browserHistory.push("/user-accounts");
     }
 
     return Promise.resolve();

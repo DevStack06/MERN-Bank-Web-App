@@ -9,7 +9,7 @@ import Account from "../components/Account";
 import NewAccountDialog from "./NewAccountDialog";
 import TransferFundsDialog from "./TransferFundsDialog";
 import {
-  fetchAccounts,
+  requestAccountById,
   showNewAccountForm,
   showTransferFunds,
 } from "../actions";
@@ -24,7 +24,6 @@ class UserAccountsPage extends Component {
     if (!authenticated) {
       browserHistory.push("/");
     }
-    dispatch(fetchAccounts());
   }
 
   goToTransactions(id) {
@@ -33,7 +32,7 @@ class UserAccountsPage extends Component {
 
   render() {
     const {
-      accounts,
+      account,
       onAddAccountClick,
       showNewAccountForm,
       showTransferFunds,
@@ -56,13 +55,11 @@ class UserAccountsPage extends Component {
           )}
         </h2>
         <div>
-          {accounts.map((account) => (
-            <Account
-              key={account.id}
-              {...account}
-              viewTransactions={this.goToTransactions}
-            />
-          ))}
+          <Account
+            key={account.id}
+            {...account}
+            viewTransactions={this.goToTransactions}
+          />
         </div>
         {/* <FloatingActionButton
           style={style}
@@ -82,7 +79,7 @@ const mapStateToProps = (state) => {
   const { accounts, login } = state;
   return {
     isFetching: accounts.isFetching,
-    accounts: accounts.items,
+    account: accounts.item,
     authenticated: login.authenticated,
     showNewAccountForm: accounts.showNewAccountForm,
     showTransferFunds: accounts.showTransferFunds,

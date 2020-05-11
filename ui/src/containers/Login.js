@@ -16,18 +16,14 @@ class Login extends Component {
 
   onLoginClick() {
     const { dispatch } = this.props;
-    let u = 0;
     let username = this.refs.username.input.value;
     let password = this.refs.password.input.value;
-    if (username === "manager" && password === "12345") {
-      u = 1;
-    }
+
     // console.log("jdbbdvb  " + u);
     dispatch(
       attemptLogin({
         username,
         password,
-        u,
       })
     );
   }
@@ -40,9 +36,9 @@ class Login extends Component {
 
         <h4>
           Enter your username and password{" "}
-          <span style={{ color: "grey", fontSize: "smaller" }}>
+          {/* <span style={{ color: "grey", fontSize: "smaller" }}>
             (anything will do, it's not real)
-          </span>
+          </span> */}
         </h4>
 
         <div>

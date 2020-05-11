@@ -30,6 +30,11 @@ export const requestAccounts = () => ({
   type: types.REQUEST_ACCOUNTS,
 });
 
+export const requestAccountById = (id) => ({
+  type: types.REQUEST_ACCOUNTBYID,
+  id: id,
+});
+
 export const receiveAccounts = (accounts) => ({
   type: types.RECEIVE_ACCOUNTS,
   accounts,

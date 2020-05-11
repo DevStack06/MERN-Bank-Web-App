@@ -53,12 +53,15 @@ class NewAccountDialog extends Component {
       >
         <div>
           <div>
-            <TextField ref="userName" hintText="User Name" />
+            <TextField
+              ref="userName"
+              hintText="User Name"
+              errorText={nameValidationMessage}
+            />
           </div>
           <TextField
             ref="accountType"
             hintText="Account Type ex-saving,current etc"
-            errorText={nameValidationMessage}
           />
         </div>
         <div>
