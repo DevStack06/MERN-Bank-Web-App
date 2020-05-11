@@ -43,7 +43,7 @@ class AccountsPage extends Component {
     return (
       <div>
         <h2>
-          Accounts
+          Admin Accounts
           {/* {showTransferFundsButton && (
             <FlatButton
               label="Transfer funds"

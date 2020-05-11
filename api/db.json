@@ -20,6 +20,13 @@
       "accountType": "saving",
       "password": "1234",
       "id": 3
+    },
+    {
+      "name": "aquib",
+      "balance": 500,
+      "accountType": "saving",
+      "password": "12345",
+      "id": 4
     }
   ],
   "transactions": [
