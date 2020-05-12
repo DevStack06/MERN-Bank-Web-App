@@ -9,6 +9,7 @@ import Account from "../components/Account";
 import NewAccountDialog from "./NewAccountDialog";
 import TransferFundsDialog from "./TransferFundsDialog";
 import {
+  fetchAccounts,
   requestAccountById,
   showNewAccountForm,
   showTransferFunds,
@@ -24,8 +25,12 @@ class UserAccountsPage extends Component {
     if (!authenticated) {
       browserHistory.push("/");
     }
+    dispatch(fetchAccounts());
   }
-
+  // componentDidUpdate() {
+  //   const { dispatch, authenticated } = this.props;
+  //   dispatch(fetchAccounts());
+  // }
   goToTransactions(id) {
     browserHistory.push(`/accounts/${id}/transactions`);
   }

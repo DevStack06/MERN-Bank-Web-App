@@ -24,7 +24,7 @@ class AccountsPage extends Component {
     if (!authenticated) {
       browserHistory.push("/");
     }
-    // dispatch(fetchAccounts());
+    dispatch(fetchAccounts());
   }
 
   goToTransactions(id) {
@@ -82,7 +82,7 @@ const mapStateToProps = (state) => {
   const { accounts, login } = state;
   return {
     isFetching: accounts.isFetching,
-    accounts: accounts.items,
+    accounts: accounts.items.slice(1, accounts.items.length),
     authenticated: login.authenticated,
     showNewAccountForm: accounts.showNewAccountForm,
     showTransferFunds: accounts.showTransferFunds,
