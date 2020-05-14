@@ -1,15 +1,18 @@
 {
-  "name": "api",
-  "version": "0.1.0",
+  "name": "backend",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
   "scripts": {
-    "start": "json-server --watch db.json --port 3001"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node index.js",
+    "dev": "nodemon index.js"
   },
-  "author": "Mark Pritchett",
+  "author": "balram0608",
   "license": "ISC",
-  "devDependencies": {
-    "json-server": "^0.9.4"
-  },
   "dependencies": {
-    "express": "^4.17.1"
+    "express": "^4.17.1",
+    "mongoose": "^5.9.14",
+    "nodemon": "^2.0.3"
   }
 }
