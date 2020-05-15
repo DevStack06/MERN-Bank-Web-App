@@ -9,6 +9,7 @@ const mongoose = require("mongoose");
 mongoose.connect("mongodb://localhost:27017/bankDB", {
   useNewUrlParser: true,
   useCreateIndex: true,
+  useUnifiedTopology: true,
 });
 
 const connection = mongoose.connection;
@@ -24,6 +25,8 @@ app.use(cors());
 //routes
 const accounts = require("./route/accounts");
 app.use("/accounts", accounts);
+const transactions = require("./route/transactions");
+app.use("/transactions", transactions);
 
 //acknoledge api
 app.get("/", (req, res) =>
