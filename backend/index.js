@@ -1,11 +1,12 @@
 const express = require("express");
-const PORT = 3001;
 const app = express();
+const cors = require("cors");
+const PORT = process.env.Port || 3001;
 
 const mongoose = require("mongoose");
 
 //database connection
-mongoose.connect("mongodb://localhost:27017/blogDB", {
+mongoose.connect("mongodb://localhost:27017/bankDB", {
   useNewUrlParser: true,
   useCreateIndex: true,
 });
@@ -16,10 +17,19 @@ connection.once("open", () =>
   console.log("mongoDB connection eastablished succesfully")
 );
 
-app.route("/").get((req, res) => {
-  res.json("Welcome you are in the route page :)");
-});
+//middleware
+app.use(express.json());
+app.use(cors());
 
-app.listen(PORT, "0.0.0.0", () => {
-  console.log(`server started at port ${PORT}`);
-});
+//routes
+const accounts = require("./route/accounts");
+app.use("/accounts", accounts);
+
+//acknoledge api
+app.get("/", (req, res) =>
+  res.json({ message: "Welcome you are in the main page :)" })
+);
+
+app.listen(PORT, "0.0.0.0", () =>
+  console.log(`your app is running on port ${PORT} enjoy developing`)
+);
