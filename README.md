@@ -1,21 +1,19 @@
-# React Bank
+### React Bank web app clone from the markpritchett repository for our project
 
-A demo bank application written with [react](https://facebook.github.io/react/).
+I added below new feature on this.
 
-UI project created with [create-react-app](https://github.com/facebookincubator/create-react-app).  Routing implemented using [react-router](https://github.com/ReactTraining/react-router).
-State management using [redux](redux.js.org).  Also uses [Material-UI](http://www.material-ui.com/) to make things look good :sparkles:
+1. Individual user page
+2. Admin page
+3. Migrated backe-end from fake json server to express js rest api server
+4. Connnected this app with local mongoDB database
+5. We will deploying this web-App on GCP linux server.
 
-API project uses a fake REST API thanks to [json-server](https://github.com/typicode/json-server).
+Technology Used
 
-## Getting Started
-
-Open a terminal / command prompt and run the ``` setup.sh ``` file to install node packages.
-
-The above installs the node dependencies for the main package.json file, along
-with dependencies for the API and UI projects.
-
-Start the application:
-
-``` npm start ```
-
-The above will start the UI on port 3000 and start the API on port 3001.
+1. React
+2. Redux
+3. Express Js
+4. MongoDb
+5. GCP
+6. Material UI
+7. React-Router
