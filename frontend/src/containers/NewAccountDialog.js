@@ -6,7 +6,7 @@ import FlatButton from "material-ui/FlatButton";
 import { createAccount, hideNewAccountForm } from "../actions";
 
 class NewAccountDialog extends Component {
-  submitRequest() {
+  async submitRequest() {
     const { dispatch } = this.props;
 
     let accountType = this.refs.accountType.input.value;
@@ -16,7 +16,15 @@ class NewAccountDialog extends Component {
     console.log("opening balance" + openingBalance);
 
     dispatch(createAccount(userName, openingBalance, accountType, password));
+    // setInterval(() => {
+    //   console.log("hello world");
+    // }, 2000);
+    // await this.sleep(3000);
   }
+
+  // sleep = (ms) => {
+  //   return new Promise((resolve) => setTimeout(resolve, ms));
+  // };
 
   cancel() {
     const { dispatch } = this.props;

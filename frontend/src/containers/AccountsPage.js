@@ -23,16 +23,16 @@ class AccountsPage extends Component {
     show: false,
   };
 
-  startTimer = () => {
-    setInterval(() => {
-      this.setState({
-        show: true,
-      });
-    }, 2000);
-  };
+  // startTimer = () => {
+  //   setInterval(() => {
+  //     this.setState({
+  //       show: true,
+  //     });
+  //   }, 2000);
+  // };
 
   componentDidMount() {
-    this.startTimer();
+    // this.startTimer();
     const { dispatch, authenticated } = this.props;
     if (!authenticated) {
       browserHistory.push("/");
