@@ -20,6 +20,7 @@ class NewAccountDialog extends Component {
     //   console.log("hello world");
     // }, 2000);
     // await this.sleep(3000);
+    // this.forceUpdate();
   }
 
   // sleep = (ms) => {

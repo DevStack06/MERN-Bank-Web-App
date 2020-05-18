@@ -8,6 +8,7 @@ import FlatButton from "material-ui/FlatButton";
 import Account from "../components/Account";
 import NewAccountDialog from "./NewAccountDialog";
 import TransferFundsDialog from "./TransferFundsDialog";
+import axios from "axios";
 import {
   fetchAccounts,
   showNewAccountForm,
@@ -20,7 +21,7 @@ const style = {
 
 class AccountsPage extends Component {
   state = {
-    show: false,
+    accounts: [],
   };
 
   // startTimer = () => {
@@ -37,8 +38,30 @@ class AccountsPage extends Component {
     if (!authenticated) {
       browserHistory.push("/");
     }
-    dispatch(fetchAccounts());
+    // dispatch(fetchAccounts());
+    // this.forceUpdate();
+    // setTimeout(() => {
+    //   this.setState({
+    //     // show: true,
+    //   });
+    // }, 10000);
+    this.fetchAccountData();
   }
+  // componentDidUpdate() {}
+
+  componentDidUpdate(prevProps, prevState) {
+    if (prevState.accounts !== this.state.accounts) {
+      this.fetchAccountData();
+    }
+  }
+
+  fetchAccountData = () => {
+    axios.get("http://localhost:3001/accounts").then((res) => {
+      this.setState({
+        accounts: res.data,
+      });
+    });
+  };
 
   goToTransactions(id) {
     browserHistory.push(`/accounts/${id}/transactions`);
@@ -53,6 +76,7 @@ class AccountsPage extends Component {
       onTransferFundsClick,
       showTransferFundsButton,
     } = this.props;
+    console.log("account data" + JSON.stringify(this.state.accounts));
     return (
       <div>
         <h2>
@@ -69,9 +93,9 @@ class AccountsPage extends Component {
           )} */}
         </h2>
         <div>
-          {accounts.map((account) => (
+          {this.state.accounts.map((account, index) => (
             <Account
-              key={account.id}
+              key={index}
               {...account}
               viewTransactions={this.goToTransactions}
             />
