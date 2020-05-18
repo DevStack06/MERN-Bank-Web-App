@@ -19,7 +19,20 @@ const style = {
 };
 
 class AccountsPage extends Component {
+  state = {
+    show: false,
+  };
+
+  startTimer = () => {
+    setInterval(() => {
+      this.setState({
+        show: true,
+      });
+    }, 2000);
+  };
+
   componentDidMount() {
+    this.startTimer();
     const { dispatch, authenticated } = this.props;
     if (!authenticated) {
       browserHistory.push("/");

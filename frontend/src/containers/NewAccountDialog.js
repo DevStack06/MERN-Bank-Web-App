@@ -13,6 +13,7 @@ class NewAccountDialog extends Component {
     let openingBalance = this.refs.openingBalance.input.value;
     let userName = this.refs.userName.input.value;
     let password = this.refs.password.input.value;
+    console.log("opening balance" + openingBalance);
 
     dispatch(createAccount(userName, openingBalance, accountType, password));
   }
