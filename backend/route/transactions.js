@@ -13,6 +13,16 @@ router.route("/").get(async (req, res) => {
     }
   });
 });
+router.route("/:id").get(async (req, res) => {
+  console.log(req.params.id);
+  await Transactions.find({ accountId: req.params.id }, (err, transaction) => {
+    if (err) {
+      res.status(400).json({ error: err });
+    } else {
+      res.json(transaction);
+    }
+  });
+});
 
 //getting a single post of single user
 router.route("/").post(async (req, res) => {

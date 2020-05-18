@@ -14,6 +14,28 @@ router.route("/").get(async (req, res) => {
   });
 });
 
+router.route("/:id").patch(async (req, res) => {
+  // await Accounts.findOneAndUpdate({id:req.params.id}, (err, accounts) => {
+  //   if (err) {
+  //     res.status(400).json({ error: err });
+  //   } else {
+  //     res.json(accounts);
+  //   }
+  // });
+
+  await Accounts.update(
+    { id: req.params.id },
+    { balance: req.body.balance },
+    (err, post) => {
+      if (err) return res.status(500).send(err);
+      const response = {
+        message: "ok",
+      };
+      return res.status(200).send(response);
+    }
+  );
+});
+
 //getting a single post of single user
 router.route("/").post(async (req, res) => {
   // console.log(req.body);

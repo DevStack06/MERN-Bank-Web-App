@@ -101,7 +101,7 @@ export const fetchTransactions = (accountId) => ({
       "RECEIVE_TRANSACTIONS",
       "REQUEST_TRANSACTIONS_FAILURE",
     ],
-    endpoint: `/transactions?accountId=${accountId}`,
+    endpoint: `/transactions/${accountId}`,
   },
 });
 

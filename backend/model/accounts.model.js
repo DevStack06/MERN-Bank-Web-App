@@ -12,7 +12,7 @@ const Accounts = Schema({
     unique: true,
   },
   balance: {
-    type: String,
+    type: Number,
     required: true,
   },
   password: {
@@ -26,5 +26,5 @@ const Accounts = Schema({
   },
 });
 
-Accounts.plugin(AutoIncrement, { id: "id", inc_field: "id" });
+Accounts.plugin(AutoIncrement, { id: "id_2", inc_field: "id" });
 module.exports = mongoose.model("Accounts", Accounts);

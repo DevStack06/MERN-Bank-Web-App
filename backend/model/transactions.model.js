@@ -11,16 +11,16 @@ const Transaction = Schema({
     required: true,
   },
   debit: {
-    type: String,
+    type: Number,
   },
   credit: {
-    type: String,
+    type: Number,
   },
   accountId: {
-    type: String,
+    type: Number,
   },
   date: { type: String },
 });
 
-Transaction.plugin(AutoIncrement, { id: "id2", inc_field: "id" });
+Transaction.plugin(AutoIncrement, { id: "id_1", inc_field: "id" });
 module.exports = mongoose.model("Transaction", Transaction);
