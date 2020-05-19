@@ -5,6 +5,7 @@ import TextField from "material-ui/TextField";
 import SelectField from "material-ui/SelectField";
 import FlatButton from "material-ui/FlatButton";
 import MenuItem from "material-ui/MenuItem";
+import { browserHistory } from "react-router";
 import {
   requestAccountById,
   hideTransferFunds,
@@ -38,6 +39,7 @@ class TransferFundsDialog extends Component {
         transferAmount
       )
     );
+    browserHistory.push("/user-accounts");
   }
 
   cancel() {

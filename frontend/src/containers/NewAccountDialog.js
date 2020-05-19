@@ -3,8 +3,8 @@ import { connect } from "react-redux";
 import Dialog from "material-ui/Dialog";
 import TextField from "material-ui/TextField";
 import FlatButton from "material-ui/FlatButton";
-import { createAccount, hideNewAccountForm } from "../actions";
-
+import { createAccount, hideNewAccountForm, fetchAccounts } from "../actions";
+import { browserHistory } from "react-router";
 class NewAccountDialog extends Component {
   async submitRequest() {
     const { dispatch } = this.props;
@@ -16,11 +16,13 @@ class NewAccountDialog extends Component {
     console.log("opening balance" + openingBalance);
 
     dispatch(createAccount(userName, openingBalance, accountType, password));
+    dispatch(fetchAccounts());
     // setInterval(() => {
     //   console.log("hello world");
     // }, 2000);
     // await this.sleep(3000);
     // this.forceUpdate();
+    browserHistory.push("/accounts");
   }
 
   // sleep = (ms) => {

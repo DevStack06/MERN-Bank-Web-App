@@ -8,7 +8,7 @@ import FlatButton from "material-ui/FlatButton";
 import Account from "../components/Account";
 import NewAccountDialog from "./NewAccountDialog";
 import TransferFundsDialog from "./TransferFundsDialog";
-import axios from "axios";
+
 import {
   fetchAccounts,
   showNewAccountForm,
@@ -20,9 +20,9 @@ const style = {
 };
 
 class AccountsPage extends Component {
-  state = {
-    accounts: [],
-  };
+  // state = {
+  //   data: [],
+  // };
 
   // startTimer = () => {
   //   setInterval(() => {
@@ -38,30 +38,36 @@ class AccountsPage extends Component {
     if (!authenticated) {
       browserHistory.push("/");
     }
-    // dispatch(fetchAccounts());
+    dispatch(fetchAccounts());
     // this.forceUpdate();
     // setTimeout(() => {
     //   this.setState({
     //     // show: true,
     //   });
     // }, 10000);
-    this.fetchAccountData();
+    // this.fetchAccountData();
   }
   // componentDidUpdate() {}
 
-  componentDidUpdate(prevProps, prevState) {
-    if (prevState.accounts !== this.state.accounts) {
-      this.fetchAccountData();
-    }
-  }
+  // componentDidUpdate(prevProps, prevState) {
+  //   console.log(prevState.data);
+  //   console.log(this.state.data);
+  //   if (prevState.data !== this.state.data) {
+  //     this.fetchAccountData();
+  //     this.setState({
+  //       data: this.state.data.slice(1, this.state.data.length),
+  //     });
+  //   }
+  // }
 
-  fetchAccountData = () => {
-    axios.get("http://localhost:3001/accounts").then((res) => {
-      this.setState({
-        accounts: res.data,
-      });
-    });
-  };
+  // fetchAccountData = () => {
+  //   console.log("hello   -->0");
+  //   axios.get("http://localhost:3001/accounts").then((res) => {
+  //     this.setState({
+  //       data: res.data,
+  //     });
+  //   });
+  // };
 
   goToTransactions(id) {
     browserHistory.push(`/accounts/${id}/transactions`);
@@ -76,7 +82,7 @@ class AccountsPage extends Component {
       onTransferFundsClick,
       showTransferFundsButton,
     } = this.props;
-    console.log("account data" + JSON.stringify(this.state.accounts));
+    // console.log("account data" + JSON.stringify(this.state.accounts));
     return (
       <div>
         <h2>
@@ -93,7 +99,7 @@ class AccountsPage extends Component {
           )} */}
         </h2>
         <div>
-          {this.state.accounts.map((account, index) => (
+          {accounts.map((account, index) => (
             <Account
               key={index}
               {...account}
