@@ -27,16 +27,14 @@ class UserAccountsPage extends Component {
     }
     dispatch(fetchAccounts());
   }
-  // componentDidUpdate() {
-  //   const { dispatch, authenticated } = this.props;
-  //   dispatch(fetchAccounts());
-  // }
+
   goToTransactions(id) {
     browserHistory.push(`/accounts/${id}/transactions`);
   }
 
   render() {
     const {
+      accounts,
       account,
       onAddAccountClick,
       showNewAccountForm,
@@ -44,6 +42,13 @@ class UserAccountsPage extends Component {
       onTransferFundsClick,
       showTransferFundsButton,
     } = this.props;
+    console.log("accounts---->" + JSON.stringify(accounts));
+    console.log("account --->" + JSON.stringify(account));
+    const realAccount = accounts.items.find((acc) => {
+      return acc.id === account.id;
+    });
+    console.log("reaalaccount--->" + realAccount);
+
     return (
       <div>
         <h2>
@@ -61,8 +66,8 @@ class UserAccountsPage extends Component {
         </h2>
         <div>
           <Account
-            key={account.id}
-            {...account}
+            key={realAccount.id}
+            {...realAccount}
             viewTransactions={this.goToTransactions}
           />
         </div>
@@ -83,6 +88,7 @@ class UserAccountsPage extends Component {
 const mapStateToProps = (state) => {
   const { accounts, login } = state;
   return {
+    accounts: accounts,
     isFetching: accounts.isFetching,
     account: accounts.item,
     authenticated: login.authenticated,

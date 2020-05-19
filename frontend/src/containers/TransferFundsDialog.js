@@ -30,7 +30,7 @@ class TransferFundsDialog extends Component {
     const { dispatch } = this.props;
 
     let transferAmount = this.refs.transferAmount.input.value;
-    dispatch(requestAccountById(id));
+    // dispatch(requestAccountById(id));
     console.log("id goes here yrrr" + id);
     dispatch(
       transferFunds(
@@ -39,6 +39,7 @@ class TransferFundsDialog extends Component {
         transferAmount
       )
     );
+
     browserHistory.push("/user-accounts");
   }
 
