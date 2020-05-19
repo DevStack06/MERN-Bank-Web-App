@@ -51,7 +51,7 @@ class App extends Component {
     return (
       <div className="app">
         <AppBar
-          title={<span style={styles.title}>React Bank</span>}
+          title={<span style={styles.title}>TCS Bank</span>}
           // onTitleTouchTap={() => this.goHome()}
           showMenuIconButton={false}
           iconElementRight={
