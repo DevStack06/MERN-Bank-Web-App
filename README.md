@@ -17,3 +17,5 @@ Technology Used
 5. GCP
 6. Material UI
 7. React-Router
+
+**Currently working on connection between bank server to the IBM Blockchain WebAPP**
