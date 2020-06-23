@@ -1,13 +1,13 @@
 const formatMoney = (amount) => {
-    let formatter = new Intl.NumberFormat('en-GB', {
-        style: 'currency',
-        currency: 'GBP',
-        minimumFractionDigits: 2,
-    })
+  let formatter = new Intl.NumberFormat("en-GB", {
+    style: "currency",
+    currency: "INR",
+    minimumFractionDigits: 2,
+  });
 
-    let formattedValue = formatter.format(amount)
+  let formattedValue = formatter.format(amount);
 
-    return formattedValue
-}
+  return formattedValue;
+};
 
-export default formatMoney
+export default formatMoney;
