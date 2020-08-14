@@ -12,7 +12,7 @@ class WelcomePage extends Component {
     const { authenticated } = this.props;
     return (
       <div>
-        <h2>Welcome to TATA Bank</h2>
+        <h2>Welcome to Dev Stack Bank</h2>
 
         {!authenticated && <Login />}
         {/* {authenticated && (
